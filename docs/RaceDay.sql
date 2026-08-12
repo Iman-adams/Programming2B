@@ -6,7 +6,7 @@ User_ID int primary key,
 FullName varchar(50) not null,
 Email varchar(50) not null,
 PasswordHash varchar(50) not null,
-Role varchar(20) not null,
+Role varchar(20) not null, -- 'Organiser' vs 'Participant'
 CreatedAt datetime not null,
 Gender varchar(20) null,
 DateOfBirth date null
@@ -27,8 +27,8 @@ Venue_ID int not null,
 Title varchar(50) not null,
 Description varchar(50) not null,
 EventDate datetime not null,
-Status varchar(50) not null,
-EventType varchar(50) not null
+Status varchar(50) not null, -- 'Upcoming', 'Completed', 'Cancelled'
+EventType varchar(50) not null, -- 'Running', 'Cycling', 'Triathlon'
 Foreign key (Organiser_ID) references Users(User_ID),
 Foreign key (Venue_ID) references Venues(Venue_ID)
 );
@@ -51,7 +51,7 @@ Enrollment_ID int primary key,
 User_ID int not null,
 Category_ID int not null,
 EnrollmentDate datetime not null,
-PaymentStatus varchar(50) not null,
+PaymentStatus varchar(50) not null, -- 'Paid', 'Pending', 'Refunded'
 BibNumber varchar(20) null,
 EmergancyContact varchar(50) null,
 Foreign key (User_ID) references Users(User_ID),
@@ -63,7 +63,7 @@ Result_ID int not null,
 Enrollment_ID int not null,
 FinishTimeMinutes decimal(6,2) null,
 OverallRank int null,
-Completed int null,
+Completed int null, -- 1 = finished, 0 =DNF
 CategoryRank int null,
 Foreign key (Enrollment_ID) references Enrollment(Enrollment_ID)
 );
