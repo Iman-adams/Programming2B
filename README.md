@@ -12,3 +12,6 @@
 
 ## Section c
 ### Overview
+- Section C provides the complete T-SQL database script required to build, structure, and populate the physical RaceDay database in SQL Server.
+- It defines all six tables using structured 3-digit primary key series (100s through 600s) while strictly enforcing foreign key relationships between users, venues, events, categories, enrollments, and results.
+- It includes realistic sample seed data to test the system and ends with verification SELECT queries to instantly check that all tables were created and populated correctly.
