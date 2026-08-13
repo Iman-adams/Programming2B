@@ -1,4 +1,4 @@
-# RaceDay event and race management System
+# RaceDay event and race management system
 ## YouTube video
 ## Section A
 ### Overview
