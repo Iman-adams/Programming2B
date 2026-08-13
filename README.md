@@ -8,6 +8,7 @@
 
 ## Section B
 ### Overview
+- Section B details the functional API architecture required for client-server interaction. The specification outlines HTTP verbs, endpoint routing rules, payload requirements, authentication constraints, and standardized HTTP response status codes.
 
 ## Section c
 ### Overview
