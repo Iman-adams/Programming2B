@@ -6,7 +6,7 @@ User_ID int primary key,
 FullName varchar(50) not null,
 Email varchar(50) not null,
 PasswordHash varchar(50) not null,
-Role varchar(20) not null, -- 'Organiser' vs 'Participant'
+Role varchar(20) not null,    -- 'Organiser' vs 'Participant'
 CreatedAt datetime not null,
 Gender varchar(20) null,
 DateOfBirth date null
@@ -22,13 +22,13 @@ Address varchar(50) not null
 
 Create table Events (
 Event_ID int primary key,
-Organiser_ID int not null,
+Organiser_ID int not null,    -- Foreign key referencing host user (Organiser)
 Venue_ID int not null,
 Title varchar(50) not null,
 Description varchar(50) not null,
 EventDate datetime not null,
-Status varchar(50) not null, -- 'Upcoming', 'Completed', 'Cancelled'
-EventType varchar(50) not null, -- 'Running', 'Cycling', 'Triathlon'
+Status varchar(50) not null,    -- 'Upcoming', 'Completed', 'Cancelled'
+EventType varchar(50) not null,    -- 'Running', 'Cycling', 'Triathlon'
 Foreign key (Organiser_ID) references Users(User_ID),
 Foreign key (Venue_ID) references Venues(Venue_ID)
 );
@@ -60,7 +60,7 @@ Foreign key (Category_ID) references EventCategories(Category_ID)
 
 Create table Results (
 Result_ID int not null,
-Enrollment_ID int not null,
+Enrollment_ID int not null,   -- Foreign key linking result to registration
 FinishTimeMinutes decimal(6,2) null,
 OverallRank int null,
 Completed int null, -- 1 = finished, 0 =DNF
