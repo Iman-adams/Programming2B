@@ -1,5 +1,9 @@
 # RaceDay event and race management system
 ## YouTube video
+
+## CI/CD
+<img width="1443" height="177" alt="image" src="https://github.com/user-attachments/assets/070663e5-98ae-4b3b-9325-15128d777435" />
+
 ## Section A
 <img width="1493" height="652" alt="RaceDay_ERD" src="https://github.com/user-attachments/assets/79fd527a-96e4-404b-b5c8-b8e727d22223" />
 
