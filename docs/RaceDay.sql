@@ -59,7 +59,7 @@ Foreign key (Category_ID) references EventCategories(Category_ID)
 );
 
 Create table Results (
-Result_ID int not null,
+Result_ID int primary key,
 Enrollment_ID int not null,   -- Foreign key linking result to registration
 FinishTimeMinutes decimal(6,2) null,
 OverallRank int null,
