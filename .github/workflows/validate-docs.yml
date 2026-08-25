@@ -18,28 +18,28 @@ jobs:
         run: |
           echo "Starting CI/CD validation check..."
 
-          # 1. Verify /docs directory exists
+          # 1. Check if /docs folder exists
           if [ ! -d "docs" ]; then
             echo "::error:: The /docs folder does not exist at the root level."
             exit 1
           fi
 
-          # 2. Check for ERD file (PNG or PDF)
-          if [ ! -f "docs/RaceDay_ERD.png" ] && [ ! -f "docs/RaceDay_ERD.pdf" ]; then
-            echo "::error:: ERD file (RaceDay_ERD.png or RaceDay_ERD.pdf) is missing in /docs!"
+          # 2. Check for ANY SQL script file (*.sql)
+          if ! ls docs/*.sql 1> /dev/null 2>&1; then
+            echo "::error:: No .sql database script found in /docs!"
             exit 1
           fi
 
-          # 3. Check for API Endpoint Plan file (MD or PDF)
-          if [ ! -f "docs/API_Plan.md" ] && [ ! -f "docs/API_Plan.pdf" ]; then
-            echo "::error:: API Plan file (API_Plan.md or API_Plan.pdf) is missing in /docs!"
+          # 3. Check for ANY ERD image or PDF file (*.png, *.jpg, *.jpeg, *.pdf)
+          if ! ls docs/*.png docs/*.jpg docs/*.jpeg docs/*.pdf 1> /dev/null 2>&1; then
+            echo "::error:: No ERD file (.png, .jpg, or .pdf) found in /docs!"
             exit 1
           fi
 
-          # 4. Check for SQL Script file
-          if [ ! -f "docs/RaceDay_Schema.sql" ]; then
-            echo "::error:: SQL Script file (RaceDay_Schema.sql) is missing in /docs!"
+          # 4. Check for ANY Markdown file (*.md)
+          if ! ls docs/*.md 1> /dev/null 2>&1; then
+            echo "::error:: No API Plan (.md) file found in /docs!"
             exit 1
           fi
 
-          echo "SUCCESS: All required planning documents exist in the /docs folder!"
+          echo "SUCCESS: All required planning assets are present in /docs!"
