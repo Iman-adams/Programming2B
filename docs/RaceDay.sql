@@ -53,20 +53,21 @@ Category_ID int not null,
 EnrollmentDate datetime not null,
 PaymentStatus varchar(50) not null, -- 'Paid', 'Pending', 'Refunded'
 BibNumber varchar(20) null,
-EmergancyContact varchar(50) null,
+EmergencyContact varchar(50) null,
 Foreign key (User_ID) references Users(User_ID),
 Foreign key (Category_ID) references EventCategories(Category_ID)
 );
 
 Create table Results (
 Result_ID int primary key,
-Enrollment_ID int not null,   -- Foreign key linking result to registration
+Enrollment_ID int not null,  -- Foreign key linking result to registration
 FinishTimeMinutes decimal(6,2) null,
 OverallRank int null,
-Completed int null, -- 1 = finished, 0 =DNF
+Completed int null,   -- 1 = finished, 0 = DNF
 CategoryRank int null,
 Foreign key (Enrollment_ID) references Enrollment(Enrollment_ID)
 );
+
 
 Insert into Users (User_ID, FullName, Email, PasswordHash, Role, CreatedAt, Gender, DateOfBirth) values
 (101, 'Iman Adams', 'iman@raceday.co.za', 'pass123', 'Organiser', '2026-01-10', 'Female', '1995-04-12'),
@@ -78,19 +79,21 @@ Insert into Venues (Venue_ID, Name, City, Province, Address) values
 (201, 'Green Point Athletics Stadium', 'Cape Town', 'Western Cape', '1 Fritz Sonnenberg Rd'),
 (202, 'Cape Town Stadium Grounds', 'Cape Town', 'Western Cape', 'V&A Waterfront');
 
-INSERT INTO Events (Event_ID, Organiser_ID, Venue_ID, Title, Description, EventDate, Status, EventType) VALUES
+Insert into Events (Event_ID, Organiser_ID, Venue_ID, Title, Description, EventDate, Status, EventType) values
 (301, 101, 201, 'Cape Coastal Marathon', 'Scenic coastal road race', '2026-09-15 06:00:00', 'Upcoming', 'Running'),
 (302, 102, 202, 'Community Trail Run', 'Township run event', '2026-10-10 07:00:00', 'Upcoming', 'Running'),
 (303, 101, 201, 'Peninsula Cycle Challenge', 'Scenic coastal cycle', '2026-11-05 06:30:00', 'Upcoming', 'Cycling');
 
 Insert into EventCategories (Category_ID, Event_ID, CategoryName, DistanceKm, EntryFee, MaxParticipants, StartDateTime, MinAge, RouteDescription) values
 (401, 301, 'Full Marathon', 42.20, 350.00, 2000, '2026-09-15 06:00:00', 18, 'Coastal route along Atlantic seaboard'),
-(402, 302, '10km Road Run', 10.00, 120.00, 1500, '2026-10-10 07:00:00', 14, 'Flat street circuit'),
-(403, 303, '45km Cycle', 45.00, 400.00, 2500, '2026-11-05 06:30:00', 16, 'Highway loop and coastal road');
+(402, 301, 'Half Marathon', 21.10, 250.00, 1500, '2026-09-15 06:30:00', 16, 'Half loop along coastal road'),
+(403, 302, '10km Road Run', 10.00, 120.00, 1500, '2026-10-10 07:00:00', 14, 'Flat street circuit'),
+(404, 302, '5km Fun Run', 5.00, 70.00, 1000, '2026-10-10 07:30:00', 10, 'Short neighbourhood loop'),
+(405, 303, '45km Cycle', 45.00, 400.00, 2500, '2026-11-05 06:30:00', 16, 'Highway loop and coastal road');
 
-Insert into Enrollment (Enrollment_ID, User_ID, Category_ID, EnrollmentDate, PaymentStatus, BibNumber, EmergancyContact) values
+Insert into Enrollment (Enrollment_ID, User_ID, Category_ID, EnrollmentDate, PaymentStatus, BibNumber, EmergencyContact) values
 (501, 103, 401, '2026-03-01', 'Paid', '1001', '0821234567'),
-(502, 104, 402, '2026-03-05', 'Paid', '2005', '0839876543');
+(502, 104, 403, '2026-03-05', 'Paid', '2005', '0839876543');
 
 Insert into Results (Result_ID, Enrollment_ID, FinishTimeMinutes, OverallRank, Completed, CategoryRank) values
 (601, 501, 215.45, 42, 1, 12),
