@@ -24,22 +24,22 @@ jobs:
             exit 1
           fi
 
-          # 2. Check for ANY SQL script file (*.sql)
-          if ! ls docs/*.sql 1> /dev/null 2>&1; then
-            echo "::error:: No .sql database script found in /docs!"
+          # 2. Check for API_Plan.md
+          if [ ! -f "docs/API_Plan.md" ]; then
+            echo "::error:: API_Plan.md is missing in /docs!"
             exit 1
           fi
 
-          # 3. Check for ANY ERD image or PDF file (*.png, *.jpg, *.jpeg, *.pdf)
-          if ! ls docs/*.png docs/*.jpg docs/*.jpeg docs/*.pdf 1> /dev/null 2>&1; then
-            echo "::error:: No ERD file (.png, .jpg, or .pdf) found in /docs!"
+          # 3. Check for RaceDay.sql
+          if [ ! -f "docs/RaceDay.sql" ]; then
+            echo "::error:: RaceDay.sql is missing in /docs!"
             exit 1
           fi
 
-          # 4. Check for ANY Markdown file (*.md)
-          if ! ls docs/*.md 1> /dev/null 2>&1; then
-            echo "::error:: No API Plan (.md) file found in /docs!"
+          # 4. Check for RaceDay_ERD.png
+          if [ ! -f "docs/RaceDay_ERD.png" ]; then
+            echo "::error:: RaceDay_ERD.png is missing in /docs!"
             exit 1
           fi
 
-          echo "SUCCESS: All required planning assets are present in /docs!"
+          echo "SUCCESS: All required planning documents exist in the /docs folder!"
