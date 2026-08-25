@@ -18,23 +18,27 @@ jobs:
         run: |
           echo "Starting CI/CD validation check..."
 
+          # 1. Verify /docs directory exists
           if [ ! -d "docs" ]; then
             echo "::error:: The /docs folder does not exist at the root level."
             exit 1
           fi
 
+          # 2. Check for ERD file (PNG or PDF)
           if [ ! -f "docs/RaceDay_ERD.png" ] && [ ! -f "docs/RaceDay_ERD.pdf" ]; then
-            echo "::error:: ERD file is missing in /docs."
+            echo "::error:: ERD file (RaceDay_ERD.png or RaceDay_ERD.pdf) is missing in /docs!"
             exit 1
           fi
 
+          # 3. Check for API Endpoint Plan file (MD or PDF)
           if [ ! -f "docs/API_Plan.md" ] && [ ! -f "docs/API_Plan.pdf" ]; then
-            echo "::error:: API Plan file is missing in /docs."
+            echo "::error:: API Plan file (API_Plan.md or API_Plan.pdf) is missing in /docs!"
             exit 1
           fi
 
+          # 4. Check for SQL Script file
           if [ ! -f "docs/RaceDay_Schema.sql" ]; then
-            echo "::error:: SQL Script file is missing in /docs."
+            echo "::error:: SQL Script file (RaceDay_Schema.sql) is missing in /docs!"
             exit 1
           fi
 
