@@ -2,7 +2,8 @@
 ## YouTube video
 
 ## CI/CD
-<img width="1443" height="177" alt="image" src="https://github.com/user-attachments/assets/070663e5-98ae-4b3b-9325-15128d777435" />
+<img width="1472" height="610" alt="image" src="https://github.com/user-attachments/assets/3f7193c8-24a4-4269-8b00-3da4ac529af5" />
+
 
 ## Section A
 <img width="1493" height="652" alt="RaceDay_ERD" src="https://github.com/user-attachments/assets/79fd527a-96e4-404b-b5c8-b8e727d22223" />
