@@ -24,9 +24,9 @@ jobs:
             exit 1
           fi
 
-          # 2. Check for API_Plan.md
-          if [ ! -f "docs/API_Plan.md" ]; then
-            echo "::error:: API_Plan.md is missing in /docs!"
+          # 2. Check for API_Endpoint_Plan.md or API_Plan.md
+          if [ ! -f "docs/API_Endpoint_Plan.md" ] && [ ! -f "docs/API_Plan.md" ]; then
+            echo "::error:: API_Endpoint_Plan.md (or API_Plan.md) is missing in /docs!"
             exit 1
           fi
 
@@ -36,9 +36,9 @@ jobs:
             exit 1
           fi
 
-          # 4. Check for RaceDay_ERD.png
-          if [ ! -f "docs/RaceDay_ERD.png" ]; then
-            echo "::error:: RaceDay_ERD.png is missing in /docs!"
+          # 4. Check for RaceDay_ERD image (supports .png, .jpg, .jpeg)
+          if [ ! -f "docs/RaceDay_ERD.png" ] && [ ! -f "docs/RaceDay_ERD.jpg" ] && [ ! -f "docs/RaceDay_ERD.jpeg" ]; then
+            echo "::error:: RaceDay_ERD image is missing in /docs!"
             exit 1
           fi
 
