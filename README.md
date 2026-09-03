@@ -4,12 +4,10 @@
 ## CI/CD
 <img width="1472" height="610" alt="image" src="https://github.com/user-attachments/assets/3f7193c8-24a4-4269-8b00-3da4ac529af5" />
 
-
 ## Section A
-<img width="1493" height="652" alt="RaceDay_ERD" src="https://github.com/user-attachments/assets/79fd527a-96e4-404b-b5c8-b8e727d22223" />
-
 ### Overview
 - Section A establishes the relational model for the entire RaceDay system. The database is structured to prevent redundant data storage while maintaining strict referential integrity across all entities.
+<img width="1493" height="652" alt="RaceDay_ERD" src="https://github.com/user-attachments/assets/79fd527a-96e4-404b-b5c8-b8e727d22223" />
 
 ## Section B
 ### Overview
