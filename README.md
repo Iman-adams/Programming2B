@@ -12,8 +12,14 @@
 ## Section B
 ### Overview
 - Section B details the functional API architecture required for client-server interaction. The specification outlines HTTP verbs, endpoint routing rules, payload requirements, authentication constraints, and standardized HTTP response status codes.
+<img width="1768" height="695" alt="Screenshot 2026-09-04 094535" src="https://github.com/user-attachments/assets/9844944b-e045-4ef1-acb8-e056cc06ce6b" />
+<img width="1764" height="857" alt="Screenshot 2026-09-04 094604" src="https://github.com/user-attachments/assets/6e1aa2f8-44c4-4491-8810-88faa05ba00f" />
+<img width="1792" height="592" alt="Screenshot 2026-09-04 094637" src="https://github.com/user-attachments/assets/061e7d0a-33ca-4c70-b033-842ffe30476a" />
+<img width="1778" height="527" alt="Screenshot 2026-09-04 094655" src="https://github.com/user-attachments/assets/3b5c04a9-9a77-41bd-919d-9926d06a73db" />
+<img width="1767" height="527" alt="Screenshot 2026-09-04 094709" src="https://github.com/user-attachments/assets/bd84090f-d91d-4f6e-95c2-61b6dfc82782" />
 
-## Section c
+
+## Section C
 ### Overview
 - Section C provides the complete T-SQL database script required to build, structure, and populate the physical RaceDay database in SQL Server.
 - It defines all six tables using structured 3-digit primary key series (100s through 600s) while strictly enforcing foreign key relationships between users, venues, events, categories, enrollments, and results.
