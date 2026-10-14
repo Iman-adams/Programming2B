@@ -2,19 +2,19 @@
 ## YouTube video
 https://youtu.be/QU9NrNSRq3k
 
-# Part 2
+## Part 2
 
-# Part 1
-## CI/CD
+## Part 1
+### CI/CD
 <img width="1472" height="610" alt="image" src="https://github.com/user-attachments/assets/3f7193c8-24a4-4269-8b00-3da4ac529af5" />
 
-## Section A
-### Overview
+### Section A
+#### Overview
 - Section A establishes the relational model for the entire RaceDay system. The database is structured to prevent redundant data storage while maintaining strict referential integrity across all entities.
 <img width="1493" height="652" alt="RaceDay_ERD" src="https://github.com/user-attachments/assets/79fd527a-96e4-404b-b5c8-b8e727d22223" />
 
-## Section B
-### Overview
+### Section B
+#### Overview
 - Section B details the functional API architecture required for client-server interaction. The specification outlines HTTP verbs, endpoint routing rules, payload requirements, authentication constraints, and standardized HTTP response status codes.
 <img width="1768" height="695" alt="Screenshot 2026-09-04 094535" src="https://github.com/user-attachments/assets/9844944b-e045-4ef1-acb8-e056cc06ce6b" />
 <img width="1764" height="857" alt="Screenshot 2026-09-04 094604" src="https://github.com/user-attachments/assets/6e1aa2f8-44c4-4491-8810-88faa05ba00f" />
@@ -23,8 +23,8 @@ https://youtu.be/QU9NrNSRq3k
 <img width="1767" height="527" alt="Screenshot 2026-09-04 094709" src="https://github.com/user-attachments/assets/bd84090f-d91d-4f6e-95c2-61b6dfc82782" />
 
 
-## Section C
-### Overview
+### Section C
+#### Overview
 - Section C provides the complete T-SQL database script required to build, structure, and populate the physical RaceDay database in SQL Server.
 - It defines all six tables using structured 3-digit primary key series (100s through 600s) while strictly enforcing foreign key relationships between users, venues, events, categories, enrollments, and results.
 - It includes realistic sample seed data to test the system and ends with verification SELECT queries to instantly check that all tables were created and populated correctly.
