@@ -2,10 +2,12 @@
 ## YouTube video
 https://youtu.be/QU9NrNSRq3k
 
+# Part 2
+
+# Part 1
 ## CI/CD
 <img width="1472" height="610" alt="image" src="https://github.com/user-attachments/assets/3f7193c8-24a4-4269-8b00-3da4ac529af5" />
 
-# Part 1
 ## Section A
 ### Overview
 - Section A establishes the relational model for the entire RaceDay system. The database is structured to prevent redundant data storage while maintaining strict referential integrity across all entities.
