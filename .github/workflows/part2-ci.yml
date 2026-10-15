@@ -2,32 +2,36 @@ name: RaceDay .NET CI
 
 on:
   push:
-    branches: [ "main", "master", "dev" ]
+    branches: [ "main", "master", "dev", "part-2" ]
   pull_request:
-    branches: [ "main", "master", "dev" ]
+    branches: [ "main", "master", "dev", "part-2" ]
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
     steps:
-    # 1. Checkout your repository code onto the runner
+    # Checkout repository code
     - uses: actions/checkout@v4
 
-    # 2. Setup .NET 8 SDK
+    # Setup .NET 8 SDK
     - name: Setup .NET SDK
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '8.0.x'
 
-    # 3. Restore NuGet dependencies for API and Tests
+    # Restore dependencies for both API and Test projects
     - name: Restore Dependencies
-      run: dotnet restore
+      run: |
+        dotnet restore RaceDay.API/RaceDay.API.csproj
+        dotnet restore RaceDay.Tests/RaceDay.Tests.csproj
 
-    # 4. Build the solution
-    - name: Build Solution
-      run: dotnet build --no-restore --configuration Release
+    # Build the projects
+    - name: Build Projects
+      run: |
+        dotnet build RaceDay.API/RaceDay.API.csproj --configuration Release --no-restore
+        dotnet build RaceDay.Tests/RaceDay.Tests.csproj --configuration Release --no-restore
 
-    # 5. Run xUnit tests automatically
+    # Run xUnit tests
     - name: Run Unit Tests
-      run: dotnet test --no-build --configuration Release --verbosity normal
+      run: dotnet test RaceDay.Tests/RaceDay.Tests.csproj --configuration Release --no-build --verbosity normal
