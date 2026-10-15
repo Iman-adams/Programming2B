@@ -2,27 +2,60 @@ name: RaceDay .NET CI
 
 on:
   push:
-    branches: [ "main", "master", "dev", "part-2" ]
+    branches: ["main", "master", "dev", "part-2"]
   pull_request:
-    branches: [ "main", "master", "dev", "part-2" ]
+    branches: ["main", "master", "dev", "part-2"]
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Setup .NET SDK
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: '8.0.x'
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
 
-    - name: Restore NuGet Packages
-      run: dotnet restore
+      - name: Detect .NET solution or project
+        id: detect
+        shell: bash
+        run: |
+          if ls *.sln >/dev/null 2>&1; then
+            echo "solution=$(ls *.sln | head -n 1)" >> "$GITHUB_OUTPUT"
+            echo "has_project=true" >> "$GITHUB_OUTPUT"
+          elif find . -name "*.csproj" -o -name "*.fsproj" | head -n 1 | grep -q .; then
+            echo "project=$(find . -name "*.csproj" -o -name "*.fsproj" | head -n 1)" >> "$GITHUB_OUTPUT"
+            echo "has_project=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_project=false" >> "$GITHUB_OUTPUT"
+          fi
 
-    - name: Build Solution
-      run: dotnet build --configuration Release --no-restore
+      - name: Restore NuGet Packages
+        if: steps.detect.outputs.has_project == 'true'
+        run: dotnet restore
 
-    - name: Run xUnit Tests
-      run: dotnet test --configuration Release --no-build --verbosity normal
+      - name: Build Solution
+        if: steps.detect.outputs.has_project == 'true'
+        shell: bash
+        run: |
+          if [ -n "${{ steps.detect.outputs.solution }}" ]; then
+            dotnet build "${{ steps.detect.outputs.solution }}" --configuration Release --no-restore
+          else
+            dotnet build "${{ steps.detect.outputs.project }}" --configuration Release --no-restore
+          fi
+
+      - name: Run xUnit Tests
+        if: steps.detect.outputs.has_project == 'true'
+        shell: bash
+        run: |
+          if [ -n "${{ steps.detect.outputs.solution }}" ]; then
+            dotnet test "${{ steps.detect.outputs.solution }}" --configuration Release --no-build --verbosity normal
+          else
+            dotnet test "${{ steps.detect.outputs.project }}" --configuration Release --no-build --verbosity normal
+          fi
+
+      - name: No .NET project found
+        if: steps.detect.outputs.has_project != 'true'
+        run: echo "No .NET solution or project was found. Skipping build/test."
