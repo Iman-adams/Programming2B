@@ -1,0 +1,33 @@
+name: RaceDay .NET CI
+
+on:
+  push:
+    branches: [ "main", "master", "dev" ]
+  pull_request:
+    branches: [ "main", "master", "dev" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Checkout your repository code onto the runner
+    - uses: actions/checkout@v4
+
+    # 2. Setup .NET 8 SDK
+    - name: Setup .NET SDK
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+
+    # 3. Restore NuGet dependencies for API and Tests
+    - name: Restore Dependencies
+      run: dotnet restore
+
+    # 4. Build the solution
+    - name: Build Solution
+      run: dotnet build --no-restore --configuration Release
+
+    # 5. Run xUnit tests automatically
+    - name: Run Unit Tests
+      run: dotnet test --no-build --configuration Release --verbosity normal
