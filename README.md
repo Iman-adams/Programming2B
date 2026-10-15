@@ -6,6 +6,8 @@
 https://youtu.be/QU9NrNSRq3k
 
 ## Part 2
+### CI/CD
+<img width="1437" height="707" alt="image" src="https://github.com/user-attachments/assets/8566cb4f-fa00-48e7-aaf9-499691d3eabb" />
 
 ## Part 1
 ### CI/CD
