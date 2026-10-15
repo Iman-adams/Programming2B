@@ -1,5 +1,5 @@
 name: RaceDay .NET CI
-
+ 
 on:
   push:
     branches: ["main", "master", "dev", "part-2"]
