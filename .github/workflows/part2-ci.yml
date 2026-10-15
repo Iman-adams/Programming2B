@@ -18,15 +18,11 @@ jobs:
       with:
         dotnet-version: '8.0.x'
 
-    - name: Restore Dependencies
-      run: |
-        dotnet restore RaceDay.API/RaceDay.API.csproj
-        dotnet restore RaceDay.Tests/RaceDay.Tests.csproj
+    - name: Restore NuGet Packages
+      run: dotnet restore
 
-    - name: Build Projects
-      run: |
-        dotnet build RaceDay.API/RaceDay.API.csproj --configuration Release --no-restore
-        dotnet build RaceDay.Tests/RaceDay.Tests.csproj --configuration Release --no-restore
+    - name: Build Solution
+      run: dotnet build --configuration Release --no-restore
 
-    - name: Run Unit Tests
-      run: dotnet test RaceDay.Tests/RaceDay.Tests.csproj --configuration Release --no-build --verbosity normal
+    - name: Run xUnit Tests
+      run: dotnet test --configuration Release --no-build --verbosity normal
