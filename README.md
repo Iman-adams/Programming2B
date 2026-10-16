@@ -1,6 +1,7 @@
 # RaceDay event and race management system
 ## YouTube video
 ### Part 2 link
+https://youtu.be/vbwbnePUmkU
 
 ### Part 1 link
 https://youtu.be/QU9NrNSRq3k
