@@ -1,0 +1,47 @@
+name: RaceDay .NET CI
+
+on:
+  push:
+    branches: ["main", "master", "dev", "part-2"]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Find and Restore Project
+        run: |
+          sln_file=$(find . -name "*.sln" | head -n 1)
+          if [ -n "$sln_file" ]; then
+            echo "Found solution: $sln_file"
+            dotnet restore "$sln_file"
+            echo "SOLUTION=$sln_file" >> $GITHUB_ENV
+          else
+            proj_file=$(find . -name "*.csproj" | head -n 1)
+            echo "Found project: $proj_file"
+            dotnet restore "$proj_file"
+            echo "PROJECT=$proj_file" >> $GITHUB_ENV
+          fi
+
+      - name: Build Project
+        run: |
+          if [ -n "${{ env.SOLUTION }}" ]; then
+            dotnet build "${{ env.SOLUTION }}" --configuration Release --no-restore
+          else
+            dotnet build "${{ env.PROJECT }}" --configuration Release --no-restore
+          fi
+
+      - name: Run Unit Tests
+        run: |
+          if [ -n "${{ env.SOLUTION }}" ]; then
+            dotnet test "${{ env.SOLUTION }}" --configuration Release --no-build --verbosity normal
+          else
+            dotnet test "${{ env.PROJECT }}" --configuration Release --no-build --verbosity normal
+          fi
